@@ -1,0 +1,59 @@
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VSCode
+.vscode/
+
+# datasets
+datasets/*.pkl
+datasets/*.h5
+datasets/*.csv
+datasets/*.npy
+datasets/*.npz
+
+# BERT / pretrained models
+BERT_en/
+*.bin
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+
+# output models and logs
+output/
+outputs/
+models/
+checkpoints/
+logs/
+runs/
+results/
+*.log
+
+# temporary files
+*.tmp
+*.bak
+.DS_Store
+# data and pretrained models
+datasets/
+BERT_en/
+
+# logs
+logs/
+HME_MSA/logs/
+*.log
+
+# cache
+__pycache__/
+*.pyc
+
+# model checkpoints and large files
+*.pkl
+*.pth
+*.pt
+*.ckpt
+*.zip
+.git_old/
