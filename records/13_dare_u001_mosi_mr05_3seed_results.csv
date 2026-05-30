@@ -1,0 +1,4 @@
+seed,status,mae,corr,acc2,f1,log_file
+5576,finished,0.7982,0.741,0.7959,0.7961,logs/uncertainty_sensitivity/mosi_mr05_s5576_e100_u001.log
+1111,finished,0.7922,0.7393,0.8017,0.8023,logs/official_u001/dare_u001_mosi_mr05_s1111_e100.log
+2222,finished,0.7821,0.7568,0.7755,0.7747,logs/official_u001/dare_u001_mosi_mr05_s2222_e100.log

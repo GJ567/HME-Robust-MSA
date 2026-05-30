@@ -57,3 +57,30 @@ __pycache__/
 *.ckpt
 *.zip
 .git_old/
+
+# backups / archives / debug temp
+*.bak*
+*.backup
+*.tar.gz
+*.zip
+debug_*.py
+
+# notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# runtime logs
+logs/
+HME_MSA/logs/
+
+# large data / models
+datasets/
+BERT_en/
+output/
+*.pkl
+*.pth
+*.pt
+*.ckpt
+
+# debug location records
+records/debug_*.txt

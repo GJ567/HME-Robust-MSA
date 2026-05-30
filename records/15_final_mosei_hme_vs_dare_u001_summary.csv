@@ -1,0 +1,5 @@
+dataset,missing_rate,model,seed,mae,corr,acc2,f1,source
+MOSEI,0.2,DARE-HME u=0.001,5576,0.5495,0.756,0.8083,0.8139,logs/official_u001/dare_u001_mosei_mr02_s5576_e100.log
+MOSEI,0.2,HME,5576,0.6011,0.6755,0.7839,0.7859,records/02_hme_baseline_results.csv
+MOSEI,0.5,DARE-HME u=0.001,5576,0.5663,0.7344,0.8075,0.8105,logs/official_u001/dare_u001_mosei_mr05_s5576_e100.log
+MOSEI,0.5,HME,5576,0.6833,0.5402,0.7334,0.7312,records/02_hme_baseline_results.csv

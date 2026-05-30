@@ -1,4 +1,32 @@
 from __future__ import absolute_import, division, print_function
+
+from tqdm import tqdm as _raw_tqdm, trange as _raw_trange
+import sys
+
+# ===== stable tqdm one-line progress settings =====
+TQDM_BAR_FORMAT = "{desc}: {percentage:3.0f}%|{bar:30}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]"
+
+def tqdm(*args, **kwargs):
+    kwargs["dynamic_ncols"] = True
+    kwargs["ncols"] = 100
+    kwargs["leave"] = True
+    kwargs["mininterval"] = 0.5
+    kwargs["bar_format"] = TQDM_BAR_FORMAT
+    kwargs["file"] = sys.stdout
+    return _raw_tqdm(*args, **kwargs)
+
+def trange(*args, **kwargs):
+    kwargs["dynamic_ncols"] = True
+    kwargs["ncols"] = 100
+    kwargs["leave"] = True
+    kwargs["mininterval"] = 0.5
+    kwargs["bar_format"] = TQDM_BAR_FORMAT
+    kwargs["file"] = sys.stdout
+    return _raw_trange(*args, **kwargs)
+# ===== end stable tqdm settings =====
+
+
+
 import sys
 # sys.path.append('..')
 import argparse
@@ -10,7 +38,8 @@ import numpy as np
 from typing import *
 from utils import *
 import time
-from tqdm import tqdm, trange
+
+
 from sklearn.metrics import classification_report, confusion_matrix, precision_recall_fscore_support, accuracy_score, f1_score
 import torch
 import torch.nn as nn
@@ -386,6 +415,15 @@ parser.add_argument('--weight_decay', type=float, default=5e-4)
 
 
 args = parser.parse_args()
+# Auto set modality dimensions for MOSI/MOSEI
+if args.dataset.lower() == "mosei":
+    args.TEXT_DIM = 768
+    args.VISUAL_DIM = 35
+    args.ACOUSTIC_DIM = 74
+else:
+    args.TEXT_DIM = 768
+    args.VISUAL_DIM = 20
+    args.ACOUSTIC_DIM = 5
 torch.manual_seed(args.seed)
 dataset = str.lower(args.dataset.strip())
 args = parser.parse_args()
@@ -438,7 +476,7 @@ def train_epoch(model: nn.Module, train_dataloader: DataLoader, epoch=None):
     nums = args.train_nums
     ps = generate_missing_matrix(nums, 3, missing_rate=args.missing_rate)
 
-    for batch_idx, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
+    for batch_idx, batch in enumerate(tqdm(train_dataloader, desc="Iteration", dynamic_ncols=True, ncols=100, leave=True, mininterval=0.5, bar_format=TQDM_BAR_FORMAT)):
         batch = tuple(t.to(DEVICE) for t in batch)
         input_ids, visual, acoustic, input_mask, segment_ids, label_ids = batch
         visual = torch.squeeze(visual, 1)
@@ -491,7 +529,7 @@ def eval_epoch(model: nn.Module, dev_dataloader: DataLoader):
     ps = generate_missing_matrix(nums, 3, missing_rate=args.missing_rate)
 
     with torch.no_grad():
-        for batch_idx, batch in enumerate(tqdm(dev_dataloader, desc="Iteration")):
+        for batch_idx, batch in enumerate(tqdm(dev_dataloader, desc="Iteration", dynamic_ncols=True, ncols=100, leave=True, mininterval=0.5, bar_format=TQDM_BAR_FORMAT)):
             batch = tuple(t.to(DEVICE) for t in batch)
             input_ids, visual, acoustic, input_mask, segment_ids, label_ids = batch
             visual = torch.squeeze(visual, 1)
@@ -538,7 +576,7 @@ def test_epoch(model: nn.Module, test_dataloader: DataLoader):
     ps = generate_missing_matrix(nums, 3, missing_rate=args.missing_rate)
     
     with torch.no_grad():
-        for batch_idx, batch in enumerate(tqdm(test_dataloader, desc="Iteration")):
+        for batch_idx, batch in enumerate(tqdm(test_dataloader, desc="Iteration", dynamic_ncols=True, ncols=100, leave=True, mininterval=0.5, bar_format=TQDM_BAR_FORMAT)):
             batch = tuple(t.to(DEVICE) for t in batch)
             
             input_ids, visual, acoustic, input_mask, segment_ids, label_ids = batch

@@ -1,0 +1,74 @@
+run_id,date,model_version,dataset,missing_rate,seed,epochs,status,result_table,log_file,note
+sanity_mosi_hme_mr00_s5576_e1,2026-05-27,HME,MOSI,0.0,5576,1,finished,02_hme_baseline_results.csv,,sanity check only
+sanity_mosi_hme_mr02_s5576_e1,2026-05-27,HME,MOSI,0.2,5576,1,finished,02_hme_baseline_results.csv,,sanity check only
+sanity_mosi_dare_mr02_s5576_e1,2026-05-27,DARE-HME,MOSI,0.2,5576,1,finished,04_dare_hme_results.csv,,sanity check only
+sanity_mosi_topk_mr02_k3_t01_s5576_e1,2026-05-27,HME-TopK,MOSI,0.2,5576,1,finished,03_hme_topk_results.csv,logs/hme_topk/sanity_mosi_topk_mr02_k3_t01_s5576_e1.log,sanity check only
+pilot_mosi_hme_mr02_s5576_e20,2026-05-27,HME,MOSI,0.2,5576,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr02_s5576_e20.log,pilot comparison on MOSI mr=0.2 seed=5576
+pilot_mosi_topk_mr02_k3_t01_s5576_e20,2026-05-27,HME-TopK,MOSI,0.2,5576,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr02_k3_t01_s5576_e20.log,pilot comparison on MOSI mr=0.2 seed=5576
+pilot_mosi_dare_mr02_s5576_e20,2026-05-27,DARE-HME,MOSI,0.2,5576,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr02_s5576_e20.log,pilot comparison on MOSI mr=0.2 seed=5576
+pilot_mosi_hme_mr00_s5576_e20,2026-05-27,HME,MOSI,0.0,5576,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr00_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_topk_mr00_k3_t01_s5576_e20,2026-05-27,HME-TopK,MOSI,0.0,5576,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr00_k3_t01_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_dare_mr00_s5576_e20,2026-05-27,DARE-HME,MOSI,0.0,5576,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr00_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_hme_mr01_s5576_e20,2026-05-27,HME,MOSI,0.1,5576,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr01_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_topk_mr01_k3_t01_s5576_e20,2026-05-27,HME-TopK,MOSI,0.1,5576,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr01_k3_t01_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_dare_mr01_s5576_e20,2026-05-27,DARE-HME,MOSI,0.1,5576,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr01_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_hme_mr03_s5576_e20,2026-05-27,HME,MOSI,0.3,5576,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr03_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_topk_mr03_k3_t01_s5576_e20,2026-05-27,HME-TopK,MOSI,0.3,5576,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr03_k3_t01_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_dare_mr03_s5576_e20,2026-05-27,DARE-HME,MOSI,0.3,5576,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr03_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_hme_mr05_s5576_e20,2026-05-27,HME,MOSI,0.5,5576,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr05_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_topk_mr05_k3_t01_s5576_e20,2026-05-27,HME-TopK,MOSI,0.5,5576,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr05_k3_t01_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_dare_mr05_s5576_e20,2026-05-27,DARE-HME,MOSI,0.5,5576,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr05_s5576_e20.log,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_hme_mr02_s1111_e20,2026-05-28,HME,MOSI,0.2,1111,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr02_s1111_e20.log,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_topk_mr02_k3_t01_s1111_e20,2026-05-28,HME-TopK,MOSI,0.2,1111,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr02_k3_t01_s1111_e20.log,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_dare_mr02_s1111_e20,2026-05-28,DARE-HME,MOSI,0.2,1111,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr02_s1111_e20.log,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_hme_mr03_s1111_e20,2026-05-28,HME,MOSI,0.3,1111,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr03_s1111_e20.log,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_topk_mr03_k3_t01_s1111_e20,2026-05-28,HME-TopK,MOSI,0.3,1111,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr03_k3_t01_s1111_e20.log,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_dare_mr03_s1111_e20,2026-05-28,DARE-HME,MOSI,0.3,1111,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr03_s1111_e20.log,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_hme_mr05_s1111_e20,2026-05-28,HME,MOSI,0.5,1111,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr05_s1111_e20.log,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_topk_mr05_k3_t01_s1111_e20,2026-05-28,HME-TopK,MOSI,0.5,1111,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr05_k3_t01_s1111_e20.log,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_dare_mr05_s1111_e20,2026-05-28,DARE-HME,MOSI,0.5,1111,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr05_s1111_e20.log,pilot multi-seed check on MOSI seed=1111
+sanity_mosei_hme_mr02_s5576_e1,2026-05-28,HME,MOSEI,0.2,5576,1,finished,02_hme_baseline_results.csv,logs/hme/sanity_mosei_hme_mr02_s5576_e1.log,MOSEI sanity check
+sanity_mosei_dare_mr02_s5576_e1,2026-05-28,DARE-HME,MOSEI,0.2,5576,1,finished,04_dare_hme_results.csv,logs/dare_hme/sanity_mosei_dare_mr02_s5576_e1.log,MOSEI sanity check
+progress_mosi_hme_mr02_s9999_e1,2026-05-28,HME,MOSI,0.2,9999,1,finished,02_hme_baseline_results.csv,logs/hme/progress_mosi_hme_mr02_s9999_e1.log,progress bar display test only
+pilot_mosi_hme_mr02_s2222_e20,2026-05-28,HME,MOSI,0.2,2222,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr02_s2222_e20.log,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_topk_mr02_k3_t01_s2222_e20,2026-05-28,HME-TopK,MOSI,0.2,2222,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr02_k3_t01_s2222_e20.log,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_dare_mr02_s2222_e20,2026-05-28,DARE-HME,MOSI,0.2,2222,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr02_s2222_e20.log,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_hme_mr03_s2222_e20,2026-05-28,HME,MOSI,0.3,2222,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr03_s2222_e20.log,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_topk_mr03_k3_t01_s2222_e20,2026-05-28,HME-TopK,MOSI,0.3,2222,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr03_k3_t01_s2222_e20.log,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_dare_mr03_s2222_e20,2026-05-28,DARE-HME,MOSI,0.3,2222,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr03_s2222_e20.log,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_hme_mr05_s2222_e20,2026-05-28,HME,MOSI,0.5,2222,20,finished,02_hme_baseline_results.csv,logs/hme/pilot_mosi_hme_mr05_s2222_e20.log,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_topk_mr05_k3_t01_s2222_e20,2026-05-28,HME-TopK,MOSI,0.5,2222,20,finished,03_hme_topk_results.csv,logs/hme_topk/pilot_mosi_topk_mr05_k3_t01_s2222_e20.log,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_dare_mr05_s2222_e20,2026-05-28,DARE-HME,MOSI,0.5,2222,20,finished,04_dare_hme_results.csv,logs/dare_hme/pilot_mosi_dare_mr05_s2222_e20.log,pilot multi-seed check on MOSI seed=2222
+official_mosi_hme_mr05_s5576_e100,2026-05-28,HME,MOSI,0.5,5576,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosi_hme_mr05_s5576_e100.log,official check on MOSI mr=0.5 seed=5576 epochs=100
+official_mosi_topk_mr05_k3_t01_s5576_e100,2026-05-28,HME-TopK,MOSI,0.5,5576,100,finished,03_hme_topk_results.csv,logs/hme_topk/official_mosi_topk_mr05_k3_t01_s5576_e100.log,official check on MOSI mr=0.5 seed=5576 epochs=100
+official_mosi_dare_mr05_s5576_e100,2026-05-28,DARE-HME,MOSI,0.5,5576,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosi_dare_mr05_s5576_e100.log,official check on MOSI mr=0.5 seed=5576 epochs=100
+official_mosi_hme_mr05_s1111_e100,2026-05-28,HME,MOSI,0.5,1111,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosi_hme_mr05_s1111_e100.log,official MOSI mr=0.5 multi-seed check
+official_mosi_topk_mr05_k3_t01_s1111_e100,2026-05-28,HME-TopK,MOSI,0.5,1111,100,finished,03_hme_topk_results.csv,logs/hme_topk/official_mosi_topk_mr05_k3_t01_s1111_e100.log,official MOSI mr=0.5 multi-seed check
+official_mosi_dare_mr05_s1111_e100,2026-05-28,DARE-HME,MOSI,0.5,1111,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosi_dare_mr05_s1111_e100.log,official MOSI mr=0.5 multi-seed check
+official_mosi_hme_mr05_s2222_e100,2026-05-28,HME,MOSI,0.5,2222,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosi_hme_mr05_s2222_e100.log,official MOSI mr=0.5 multi-seed check
+official_mosi_topk_mr05_k3_t01_s2222_e100,2026-05-28,HME-TopK,MOSI,0.5,2222,100,finished,03_hme_topk_results.csv,logs/hme_topk/official_mosi_topk_mr05_k3_t01_s2222_e100.log,official MOSI mr=0.5 multi-seed check
+official_mosi_dare_mr05_s2222_e100,2026-05-28,DARE-HME,MOSI,0.5,2222,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosi_dare_mr05_s2222_e100.log,official MOSI mr=0.5 multi-seed check
+official_mosi_hme_mr03_s5576_e100,2026-05-28,HME,MOSI,0.3,5576,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosi_hme_mr03_s5576_e100.log,official MOSI mr=0.3 multi-seed check
+official_mosi_dare_mr03_s5576_e100,2026-05-28,DARE-HME,MOSI,0.3,5576,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosi_dare_mr03_s5576_e100.log,official MOSI mr=0.3 multi-seed check
+official_mosi_hme_mr03_s1111_e100,2026-05-28,HME,MOSI,0.3,1111,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosi_hme_mr03_s1111_e100.log,official MOSI mr=0.3 multi-seed check
+official_mosi_dare_mr03_s1111_e100,2026-05-28,DARE-HME,MOSI,0.3,1111,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosi_dare_mr03_s1111_e100.log,official MOSI mr=0.3 multi-seed check
+official_mosi_hme_mr03_s2222_e100,2026-05-28,HME,MOSI,0.3,2222,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosi_hme_mr03_s2222_e100.log,official MOSI mr=0.3 multi-seed check
+official_mosi_dare_mr03_s2222_e100,2026-05-28,DARE-HME,MOSI,0.3,2222,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosi_dare_mr03_s2222_e100.log,official MOSI mr=0.3 multi-seed check
+official_mosi_hme_mr02_s5576_e100,2026-05-29,HME,MOSI,0.2,5576,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosi_hme_mr02_s5576_e100.log,official MOSI mr=0.2 multi-seed check
+official_mosi_dare_mr02_s5576_e100,2026-05-29,DARE-HME,MOSI,0.2,5576,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosi_dare_mr02_s5576_e100.log,official MOSI mr=0.2 multi-seed check
+official_mosi_hme_mr02_s1111_e100,2026-05-29,HME,MOSI,0.2,1111,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosi_hme_mr02_s1111_e100.log,official MOSI mr=0.2 multi-seed check
+official_mosi_dare_mr02_s1111_e100,2026-05-29,DARE-HME,MOSI,0.2,1111,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosi_dare_mr02_s1111_e100.log,official MOSI mr=0.2 multi-seed check
+official_mosi_hme_mr02_s2222_e100,2026-05-29,HME,MOSI,0.2,2222,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosi_hme_mr02_s2222_e100.log,official MOSI mr=0.2 multi-seed check
+official_mosi_dare_mr02_s2222_e100,2026-05-29,DARE-HME,MOSI,0.2,2222,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosi_dare_mr02_s2222_e100.log,official MOSI mr=0.2 multi-seed check
+official_mosei_hme_mr05_s5576_e100,2026-05-29,HME,MOSEI,0.5,5576,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosei_hme_mr05_s5576_e100.log,official MOSEI mr=0.5 seed=5576 generalization check
+official_mosei_dare_mr05_s5576_e100,2026-05-29,DARE-HME,MOSEI,0.5,5576,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosei_dare_mr05_s5576_e100.log,official MOSEI mr=0.5 seed=5576 generalization check
+official_mosei_hme_mr02_s5576_e100,2026-05-29,HME,MOSEI,0.2,5576,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosei_hme_mr02_s5576_e100.log,official MOSEI mr=0.2 seed=5576 generalization check
+official_mosei_dare_mr02_s5576_e100,2026-05-29,DARE-HME,MOSEI,0.2,5576,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosei_dare_mr02_s5576_e100.log,official MOSEI mr=0.2 seed=5576 generalization check
+official_mosei_hme_mr02_s1111_e100,2026-05-29,HME,MOSEI,0.2,1111,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosei_hme_mr02_s1111_e100.log,official MOSEI mr=0.2 seed=1111 generalization multi-seed check
+official_mosei_dare_mr02_s1111_e100,2026-05-29,DARE-HME,MOSEI,0.2,1111,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosei_dare_mr02_s1111_e100.log,official MOSEI mr=0.2 seed=1111 generalization multi-seed check
+official_mosei_hme_mr02_s2222_e100,2026-05-29,HME,MOSEI,0.2,2222,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosei_hme_mr02_s2222_e100.log,official MOSEI mr=0.2 seed=2222 generalization multi-seed check
+official_mosei_dare_mr02_s2222_e100,2026-05-29,DARE-HME,MOSEI,0.2,2222,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosei_dare_mr02_s2222_e100.log,official MOSEI mr=0.2 seed=2222 generalization multi-seed check
+official_mosei_hme_mr05_s1111_e100,2026-05-29,HME,MOSEI,0.5,1111,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosei_hme_mr05_s1111_e100.log,official MOSEI mr=0.5 seed=1111 generalization multi-seed check
+official_mosei_dare_mr05_s1111_e100,2026-05-29,DARE-HME,MOSEI,0.5,1111,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosei_dare_mr05_s1111_e100.log,official MOSEI mr=0.5 seed=1111 generalization multi-seed check
+official_mosei_hme_mr05_s2222_e100,2026-05-29,HME,MOSEI,0.5,2222,100,finished,02_hme_baseline_results.csv,logs/hme/official_mosei_hme_mr05_s2222_e100.log,official MOSEI mr=0.5 seed=2222 generalization multi-seed check
+official_mosei_dare_mr05_s2222_e100,2026-05-29,DARE-HME,MOSEI,0.5,2222,100,finished,04_dare_hme_results.csv,logs/dare_hme/official_mosei_dare_mr05_s2222_e100.log,official MOSEI mr=0.5 seed=2222 generalization multi-seed check

@@ -1,4 +1,32 @@
 from __future__ import absolute_import, division, print_function
+
+from tqdm import tqdm as _raw_tqdm, trange as _raw_trange
+import sys
+
+# ===== stable tqdm one-line progress settings =====
+TQDM_BAR_FORMAT = "{desc}: {percentage:3.0f}%|{bar:30}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]"
+
+def tqdm(*args, **kwargs):
+    kwargs["dynamic_ncols"] = True
+    kwargs["ncols"] = 100
+    kwargs["leave"] = True
+    kwargs["mininterval"] = 0.5
+    kwargs["bar_format"] = TQDM_BAR_FORMAT
+    kwargs["file"] = sys.stdout
+    return _raw_tqdm(*args, **kwargs)
+
+def trange(*args, **kwargs):
+    kwargs["dynamic_ncols"] = True
+    kwargs["ncols"] = 100
+    kwargs["leave"] = True
+    kwargs["mininterval"] = 0.5
+    kwargs["bar_format"] = TQDM_BAR_FORMAT
+    kwargs["file"] = sys.stdout
+    return _raw_trange(*args, **kwargs)
+# ===== end stable tqdm settings =====
+
+
+
 import sys
 # sys.path.append('..')
 import argparse
@@ -10,7 +38,8 @@ import numpy as np
 from typing import *
 from utils import *
 import time
-from tqdm import tqdm, trange
+
+
 from sklearn.metrics import classification_report, confusion_matrix, precision_recall_fscore_support, accuracy_score, f1_score
 import torch
 import torch.nn as nn
@@ -269,7 +298,7 @@ def set_random_seed(seed: int):
     torch.cuda.manual_seed_all(seed)
 
 
-def generate_degradation_matrix(nums, num_modalities, degradation_rate=0.3):
+def generate_degradation_matrix(nums, num_modalities, degradation_rate=0.3, degradation_mode='multi'):
     
     """
     Generate multi-level degradation matrix.
@@ -290,6 +319,20 @@ def generate_degradation_matrix(nums, num_modalities, degradation_rate=0.3):
     """
 
     degradation_rate = min(max(float(degradation_rate), 0.0), 1.0)
+    degradation_mode = str(degradation_mode).lower()
+
+    # Ablation: remove multi-level degradation.
+    # In this mode, degradation becomes binary:
+    # 0 = complete, 4 = fully missing.
+    # This keeps the same degradation rate but removes levels 1/2/3.
+    if degradation_mode in ['none', 'binary', 'wo_degradation']:
+        degradation_matrix = np.random.choice(
+            [0, 4],
+            size=(nums, num_modalities),
+            p=[1.0 - degradation_rate, degradation_rate]
+        )
+        return degradation_matrix.astype(np.int64)
+
 
     # 在退化样本中：
     # 轻度退化最多，中度其次，重度再次，完全缺失最少。
@@ -397,6 +440,10 @@ parser.add_argument('--top_temperature', type=float, default=0.1,
 parser.add_argument('--use_quality_weight', type=str2bool, default=True,
                     help='whether to use quality scores in top-k enhancement')
 
+parser.add_argument('--degradation_mode', type=str, default='multi',
+                    choices=['multi', 'none', 'binary', 'wo_degradation'],
+                    help='multi: use 5-level degradation; none/binary: use binary missing only for ablation')
+
 parser.add_argument(
     "--model",
     type=str,
@@ -455,6 +502,15 @@ parser.add_argument('--weight_decay', type=float, default=5e-4)
 
 
 args = parser.parse_args()
+# Auto set modality dimensions for MOSI/MOSEI
+if args.dataset.lower() == "mosei":
+    args.TEXT_DIM = 768
+    args.VISUAL_DIM = 35
+    args.ACOUSTIC_DIM = 74
+else:
+    args.TEXT_DIM = 768
+    args.VISUAL_DIM = 20
+    args.ACOUSTIC_DIM = 5
 torch.manual_seed(args.seed)
 dataset = str.lower(args.dataset.strip())
 args = parser.parse_args()
@@ -505,11 +561,11 @@ def train_epoch(model: nn.Module, train_dataloader: DataLoader, epoch=None):
     tr_loss = 0
     nb_tr_steps = 0
     nums = args.train_nums
-    ps = generate_degradation_matrix(nums, 3, degradation_rate=args.missing_rate)
+    ps = generate_degradation_matrix(nums, 3, degradation_rate=args.missing_rate, degradation_mode=args.degradation_mode)
     if epoch == 0:
          print_degradation_statistics(ps, name="train")
 
-    for batch_idx, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
+    for batch_idx, batch in enumerate(tqdm(train_dataloader, desc="Iteration", dynamic_ncols=True, ncols=100, leave=True, mininterval=0.5, bar_format=TQDM_BAR_FORMAT)):
         batch = tuple(t.to(DEVICE) for t in batch)
         input_ids, visual, acoustic, input_mask, segment_ids, label_ids = batch
         visual = torch.squeeze(visual, 1)
@@ -560,10 +616,10 @@ def eval_epoch(model: nn.Module, dev_dataloader: DataLoader):
     dev_loss = 0
     nb_dev_steps = 0
     nums = args.dev_nums
-    ps = generate_degradation_matrix(nums, 3, degradation_rate=args.missing_rate)
+    ps = generate_degradation_matrix(nums, 3, degradation_rate=args.missing_rate, degradation_mode=args.degradation_mode)
 
     with torch.no_grad():
-        for batch_idx, batch in enumerate(tqdm(dev_dataloader, desc="Iteration")):
+        for batch_idx, batch in enumerate(tqdm(dev_dataloader, desc="Iteration", dynamic_ncols=True, ncols=100, leave=True, mininterval=0.5, bar_format=TQDM_BAR_FORMAT)):
             batch = tuple(t.to(DEVICE) for t in batch)
             input_ids, visual, acoustic, input_mask, segment_ids, label_ids = batch
             visual = torch.squeeze(visual, 1)
@@ -608,10 +664,10 @@ def test_epoch(model: nn.Module, test_dataloader: DataLoader):
     preds = []
     labels = []
     nums = args.test_nums
-    ps = generate_degradation_matrix(nums, 3, degradation_rate=args.missing_rate)
+    ps = generate_degradation_matrix(nums, 3, degradation_rate=args.missing_rate, degradation_mode=args.degradation_mode)
     
     with torch.no_grad():
-        for batch_idx, batch in enumerate(tqdm(test_dataloader, desc="Iteration")):
+        for batch_idx, batch in enumerate(tqdm(test_dataloader, desc="Iteration", dynamic_ncols=True, ncols=100, leave=True, mininterval=0.5, bar_format=TQDM_BAR_FORMAT)):
             batch = tuple(t.to(DEVICE) for t in batch)
             
             input_ids, visual, acoustic, input_mask, segment_ids, label_ids = batch
@@ -834,6 +890,7 @@ def main():
         f.write("Top-k: {}\n".format(args.top_k))
         f.write("Top temperature: {}\n".format(args.top_temperature))
         f.write("Use quality weight: {}\n".format(args.use_quality_weight))
+        f.write("Degradation mode: {}\n".format(args.degradation_mode))
         f.write("Deg uncertainty weight: {}\n".format(args.deg_uncertainty_weight))
         f.write("Train batch size: {}\n".format(args.train_batch_size))
         f.write("Dev batch size: {}\n".format(args.dev_batch_size))

@@ -1,0 +1,6 @@
+weight,setting,mae,corr,acc2,f1,log_file
+0.0,w/o Uncertainty,0.7833,0.7561,0.7886,0.7879,records/10_ablation_mosi_mr05_s5576_summary.md
+0.001,sensitivity,0.7982,0.741,0.7959,0.7961,logs/uncertainty_sensitivity/mosi_mr05_s5576_e100_u001.log
+0.003,sensitivity,0.8068,0.7288,0.793,0.793,logs/uncertainty_sensitivity/mosi_mr05_s5576_e100_u003.log
+0.005,sensitivity,0.7998,0.7415,0.7857,0.7861,logs/uncertainty_sensitivity/mosi_mr05_s5576_e100_u005.log
+0.01,DARE-HME full original,0.8122,0.7313,0.7828,0.7832,records/04_dare_hme_results.csv

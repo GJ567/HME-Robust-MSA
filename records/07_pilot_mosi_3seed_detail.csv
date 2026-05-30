@@ -1,0 +1,28 @@
+run_id,dataset,missing_rate,model_version,seed,epochs,mae,corr,acc2,f1,note
+pilot_mosi_hme_mr02_s1111_e20,MOSI,0.2,HME,1111,20,0.8515,0.7125,0.7857,0.784,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_hme_mr02_s2222_e20,MOSI,0.2,HME,2222,20,0.8859,0.6962,0.7609,0.7616,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_hme_mr02_s5576_e20,MOSI,0.2,HME,5576,20,0.8529,0.6993,0.7638,0.764,pilot comparison on MOSI mr=0.2 seed=5576
+pilot_mosi_topk_mr02_k3_t01_s1111_e20,MOSI,0.2,HME-TopK,1111,20,0.8428,0.7125,0.7886,0.7869,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_topk_mr02_k3_t01_s2222_e20,MOSI,0.2,HME-TopK,2222,20,0.885,0.6939,0.7711,0.7714,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_topk_mr02_k3_t01_s5576_e20,MOSI,0.2,HME-TopK,5576,20,0.863,0.7094,0.7755,0.7754,pilot comparison on MOSI mr=0.2 seed=5576
+pilot_mosi_dare_mr02_s1111_e20,MOSI,0.2,DARE-HME,1111,20,0.7605,0.7701,0.8061,0.8035,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_dare_mr02_s2222_e20,MOSI,0.2,DARE-HME,2222,20,0.7625,0.7866,0.8251,0.8248,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_dare_mr02_s5576_e20,MOSI,0.2,DARE-HME,5576,20,0.7491,0.7733,0.809,0.8089,pilot comparison on MOSI mr=0.2 seed=5576
+pilot_mosi_hme_mr03_s1111_e20,MOSI,0.3,HME,1111,20,0.9455,0.6344,0.7522,0.7507,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_hme_mr03_s2222_e20,MOSI,0.3,HME,2222,20,0.9308,0.6549,0.7405,0.7412,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_hme_mr03_s5576_e20,MOSI,0.3,HME,5576,20,0.9151,0.6631,0.7464,0.7444,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_topk_mr03_k3_t01_s1111_e20,MOSI,0.3,HME-TopK,1111,20,0.954,0.6336,0.7347,0.7307,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_topk_mr03_k3_t01_s2222_e20,MOSI,0.3,HME-TopK,2222,20,0.8922,0.6826,0.7609,0.7612,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_topk_mr03_k3_t01_s5576_e20,MOSI,0.3,HME-TopK,5576,20,0.9075,0.6828,0.7595,0.7569,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_dare_mr03_s1111_e20,MOSI,0.3,DARE-HME,1111,20,0.7677,0.7627,0.8003,0.8002,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_dare_mr03_s2222_e20,MOSI,0.3,DARE-HME,2222,20,0.7624,0.77,0.8032,0.8025,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_dare_mr03_s5576_e20,MOSI,0.3,DARE-HME,5576,20,0.7695,0.7552,0.8178,0.8171,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_hme_mr05_s1111_e20,MOSI,0.5,HME,1111,20,1.1362,0.5146,0.6399,0.6307,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_hme_mr05_s2222_e20,MOSI,0.5,HME,2222,20,1.1062,0.508,0.6822,0.6808,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_hme_mr05_s5576_e20,MOSI,0.5,HME,5576,20,1.1426,0.5445,0.6545,0.6476,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_topk_mr05_k3_t01_s1111_e20,MOSI,0.5,HME-TopK,1111,20,1.1666,0.5059,0.6385,0.6271,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_topk_mr05_k3_t01_s2222_e20,MOSI,0.5,HME-TopK,2222,20,1.1159,0.5272,0.7041,0.7044,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_topk_mr05_k3_t01_s5576_e20,MOSI,0.5,HME-TopK,5576,20,1.066,0.5709,0.6997,0.695,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_dare_mr05_s1111_e20,MOSI,0.5,DARE-HME,1111,20,0.8071,0.7576,0.7945,0.795,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_dare_mr05_s2222_e20,MOSI,0.5,DARE-HME,2222,20,0.8181,0.7502,0.7726,0.7725,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_dare_mr05_s5576_e20,MOSI,0.5,DARE-HME,5576,20,0.8338,0.7285,0.8047,0.805,pilot comparison on MOSI multi missing rates seed=5576

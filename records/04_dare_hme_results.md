@@ -1,0 +1,34 @@
+# 04 DARE-HME Results
+
+这里只记录 DARE-HME 完整模型。
+
+| run_id | dataset | missing_rate | degradation_mode | quality_module | uncertainty_module | seed | epochs | train_loss | valid_loss | mae | corr | acc7 | acc5 | acc2_non_zero | f1_non_zero | acc2 | f1 | note |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sanity_mosi_dare_mr02_s5576_e1 | MOSI | 0.2 | multi-level | on | on | 5576 | 1 | 2.3694 | 2.4078 | 1.2110 | 0.6789 | 0.1895 | 0.1895 | 0.8110 | 0.8093 | 0.7843 | 0.7812 | sanity check only |
+| pilot_mosi_dare_mr02_s5576_e20 | MOSI | 0.2 | multi-level | on | on | 5576 | 20 | 0.7130 | 1.4327 | 0.7491 | 0.7733 | 0.4475 | 0.5073 | 0.8216 | 0.8221 | 0.8090 | 0.8089 | pilot comparison on MOSI mr=0.2 seed=5576 |
+| pilot_mosi_dare_mr00_s5576_e20 | MOSI | 0.0 | multi-level | on | on | 5576 | 20 | 0.5520 | 1.3770 | 0.7280 | 0.7853 | 0.4534 | 0.5190 | 0.8415 | 0.8413 | 0.8222 | 0.8214 | pilot comparison on MOSI multi missing rates seed=5576 |
+| pilot_mosi_dare_mr01_s5576_e20 | MOSI | 0.1 | multi-level | on | on | 5576 | 20 | 0.5892 | 1.4610 | 0.7577 | 0.7838 | 0.4125 | 0.4665 | 0.8506 | 0.8497 | 0.8236 | 0.8217 | pilot comparison on MOSI multi missing rates seed=5576 |
+| pilot_mosi_dare_mr03_s5576_e20 | MOSI | 0.3 | multi-level | on | on | 5576 | 20 | 0.7408 | 1.5504 | 0.7695 | 0.7552 | 0.4359 | 0.4985 | 0.8354 | 0.8353 | 0.8178 | 0.8171 | pilot comparison on MOSI multi missing rates seed=5576 |
+| pilot_mosi_dare_mr05_s5576_e20 | MOSI | 0.5 | multi-level | on | on | 5576 | 20 | 0.8810 | 1.6497 | 0.8338 | 0.7285 | 0.3994 | 0.4461 | 0.8216 | 0.8225 | 0.8047 | 0.8050 | pilot comparison on MOSI multi missing rates seed=5576 |
+| pilot_mosi_dare_mr02_s1111_e20 | MOSI | 0.2 | multi-level | on | on | 1111 | 20 | 0.5221 | 1.4295 | 0.7605 | 0.7701 | 0.4461 | 0.5073 | 0.8323 | 0.8308 | 0.8061 | 0.8035 | pilot multi-seed check on MOSI seed=1111 |
+| pilot_mosi_dare_mr03_s1111_e20 | MOSI | 0.3 | multi-level | on | on | 1111 | 20 | 0.6281 | 1.5146 | 0.7677 | 0.7627 | 0.4329 | 0.5015 | 0.8186 | 0.8192 | 0.8003 | 0.8002 | pilot multi-seed check on MOSI seed=1111 |
+| pilot_mosi_dare_mr05_s1111_e20 | MOSI | 0.5 | multi-level | on | on | 1111 | 20 | 0.7612 | 1.5201 | 0.8071 | 0.7576 | 0.4038 | 0.4665 | 0.8049 | 0.8061 | 0.7945 | 0.7950 | pilot multi-seed check on MOSI seed=1111 |
+| sanity_mosei_dare_mr02_s5576_e1 | MOSEI | 0.2 | multi-level | on | on | 5576 | 1 | 1.3870 | 1.2165 | 0.5890 | 0.7305 | 0.4842 | 0.4866 | 0.8379 | 0.8323 | 0.8317 | 0.8291 | MOSEI sanity check |
+| pilot_mosi_dare_mr02_s2222_e20 | MOSI | 0.2 | multi-level | on | on | 2222 | 20 | 0.5227 | 1.3708 | 0.7625 | 0.7866 | 0.4402 | 0.4927 | 0.8369 | 0.8371 | 0.8251 | 0.8248 | pilot multi-seed check on MOSI seed=2222 |
+| pilot_mosi_dare_mr03_s2222_e20 | MOSI | 0.3 | multi-level | on | on | 2222 | 20 | 0.6020 | 1.4682 | 0.7624 | 0.7700 | 0.4300 | 0.4869 | 0.8201 | 0.8200 | 0.8032 | 0.8025 | pilot multi-seed check on MOSI seed=2222 |
+| pilot_mosi_dare_mr05_s2222_e20 | MOSI | 0.5 | multi-level | on | on | 2222 | 20 | 0.6068 | 1.4240 | 0.8181 | 0.7502 | 0.3994 | 0.4490 | 0.7912 | 0.7919 | 0.7726 | 0.7725 | pilot multi-seed check on MOSI seed=2222 |
+| official_mosi_dare_mr05_s5576_e100 | MOSI | 0.5 | multi-level | on | on | 5576 | 100 | 0.4231 | 1.3321 | 0.8122 | 0.7313 | 0.4227 | 0.4898 | 0.8003 | 0.8014 | 0.7828 | 0.7832 | official check on MOSI mr=0.5 seed=5576 epochs=100 |
+| official_mosi_dare_mr05_s1111_e100 | MOSI | 0.5 | multi-level | on | on | 1111 | 100 | 0.3886 | 1.3387 | 0.7714 | 0.7460 | 0.4315 | 0.5000 | 0.8018 | 0.8027 | 0.7857 | 0.7859 | official MOSI mr=0.5 multi-seed check |
+| official_mosi_dare_mr05_s2222_e100 | MOSI | 0.5 | multi-level | on | on | 2222 | 100 | 0.4046 | 1.3361 | 0.8180 | 0.7367 | 0.4198 | 0.4665 | 0.7942 | 0.7941 | 0.7755 | 0.7745 | official MOSI mr=0.5 multi-seed check |
+| official_mosi_dare_mr03_s5576_e100 | MOSI | 0.3 | multi-level | on | on | 5576 | 100 | 0.3186 | 1.3427 | 0.7577 | 0.7706 | 0.4329 | 0.4927 | 0.8476 | 0.8474 | 0.8251 | 0.8242 | official MOSI mr=0.3 multi-seed check |
+| official_mosi_dare_mr03_s1111_e100 | MOSI | 0.3 | multi-level | on | on | 1111 | 100 | 0.3750 | 1.3880 | 0.8026 | 0.7703 | 0.4125 | 0.4723 | 0.8003 | 0.8015 | 0.7915 | 0.7920 | official MOSI mr=0.3 multi-seed check |
+| official_mosi_dare_mr03_s2222_e100 | MOSI | 0.3 | multi-level | on | on | 2222 | 100 | 0.3584 | 1.3386 | 0.7611 | 0.7703 | 0.4431 | 0.5131 | 0.8277 | 0.8285 | 0.8120 | 0.8121 | official MOSI mr=0.3 multi-seed check |
+| official_mosi_dare_mr02_s5576_e100 | MOSI | 0.2 | multi-level | on | on | 5576 | 100 | 0.3736 | 1.3160 | 0.7329 | 0.7744 | 0.4665 | 0.5394 | 0.8338 | 0.8340 | 0.8192 | 0.8188 | official MOSI mr=0.2 multi-seed check |
+| official_mosi_dare_mr02_s1111_e100 | MOSI | 0.2 | multi-level | on | on | 1111 | 100 | 0.2523 | 1.2784 | 0.7547 | 0.7633 | 0.4490 | 0.5087 | 0.8308 | 0.8299 | 0.8090 | 0.8072 | official MOSI mr=0.2 multi-seed check |
+| official_mosi_dare_mr02_s2222_e100 | MOSI | 0.2 | multi-level | on | on | 2222 | 100 | 0.3470 | 1.3087 | 0.7611 | 0.7748 | 0.4417 | 0.4971 | 0.8308 | 0.8303 | 0.8163 | 0.8153 | official MOSI mr=0.2 multi-seed check |
+| official_mosei_dare_mr05_s5576_e100 | MOSEI | 0.5 | multi-level | on | on | 5576 | 100 | 0.3773 | 0.9985 | 0.5661 | 0.7308 | 0.5287 | 0.5445 | 0.8294 | 0.8277 | 0.8049 | 0.8081 | official MOSEI mr=0.5 seed=5576 generalization check |
+| official_mosei_dare_mr02_s5576_e100 | MOSEI | 0.2 | multi-level | on | on | 5576 | 100 | 0.3770 | 0.9856 | 0.5450 | 0.7538 | 0.5385 | 0.5551 | 0.8440 | 0.8434 | 0.8036 | 0.8088 | official MOSEI mr=0.2 seed=5576 generalization check |
+| official_mosei_dare_mr02_s1111_e100 | MOSEI | 0.2 | multi-level | on | on | 1111 | 100 |  |  |  |  |  |  |  |  |  |  | official MOSEI mr=0.2 seed=1111 generalization multi-seed check |
+| official_mosei_dare_mr02_s2222_e100 | MOSEI | 0.2 | multi-level | on | on | 2222 | 100 |  |  |  |  |  |  |  |  |  |  | official MOSEI mr=0.2 seed=2222 generalization multi-seed check |
+| official_mosei_dare_mr05_s1111_e100 | MOSEI | 0.5 | multi-level | on | on | 1111 | 100 |  |  |  |  |  |  |  |  |  |  | official MOSEI mr=0.5 seed=1111 generalization multi-seed check |
+| official_mosei_dare_mr05_s2222_e100 | MOSEI | 0.5 | multi-level | on | on | 2222 | 100 |  |  |  |  |  |  |  |  |  |  | official MOSEI mr=0.5 seed=2222 generalization multi-seed check |

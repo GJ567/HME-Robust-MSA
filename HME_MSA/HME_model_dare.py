@@ -638,6 +638,13 @@ class HME(BertPreTrainedModel):
         # =========================
         # Step 4: 对每个样本做加权增强
         # =========================
+        # Ensure quality_enabled is always defined.
+        # When use_quality_weight=False, completely disable quality usage:
+        # no quality weighting and no quality-based filtering.
+        quality_enabled = bool(getattr(self, 'use_quality_weight', True))
+        if not quality_enabled:
+            quality_scores = torch.ones(batch_size, device=device, dtype=embeddings.dtype)
+
         for i in range(batch_size):
                         # 当前 top-k 候选样本的质量分数
             candidate_quality = quality_scores[topk_indices[i]]
@@ -645,7 +652,10 @@ class HME(BertPreTrainedModel):
             # 只保留：
             # 1. 相似度超过阈值 alpha
             # 2. 质量分数大于 0 的样本
-            valid_mask = (topk_values[i] >= alpha) & (candidate_quality > 0)
+            if quality_enabled:
+                valid_mask = (topk_values[i] >= alpha) & (candidate_quality > 0)
+            else:
+                valid_mask = (topk_values[i] >= alpha)
 
             if valid_mask.any():
                 selected_indices = topk_indices[i][valid_mask]
@@ -661,7 +671,7 @@ class HME(BertPreTrainedModel):
                 #
                 # 相似度高、质量高：权重大
                 # 相似度高、质量低：权重会被压低
-                if self.use_quality_weight:
+                if quality_enabled:
                     # Full DARE-HME:
                     # 使用质量分数，联合考虑“相似度”和“样本质量”
                     # 相似度高、质量高：权重大

@@ -1,0 +1,4 @@
+run_id,ablation,dataset,missing_rate,seed,epochs,status,log_file,mae,corr,acc7,acc5,acc2_non_zero,f1_non_zero,acc2,f1
+ablation_mosi_wo_quality_mr05_s5576_e100,wo_quality,MOSI,0.5,5576,100,finished,logs/ablation/ablation_mosi_wo_quality_mr05_s5576_e100.log,0.8256,0.7347,0.4125,0.4636,0.7927,0.7939,0.7813,0.7819
+ablation_mosi_wo_uncertainty_mr05_s5576_e100,wo_uncertainty,MOSI,0.5,5576,100,finished,logs/ablation/ablation_mosi_wo_uncertainty_mr05_s5576_e100.log,0.7833,0.7561,0.4388,0.5058,0.8079,0.808,0.7886,0.7879
+ablation_mosi_wo_degradation_mr05_s5576_e100,wo_degradation,MOSI,0.5,5576,100,finished,logs/ablation/ablation_mosi_wo_degradation_mr05_s5576_e100.log,1.1279,0.5032,0.2522,0.2595,0.6631,0.6638,0.6501,0.65

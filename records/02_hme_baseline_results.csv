@@ -1,0 +1,31 @@
+run_id,dataset,missing_rate,seed,epochs,train_loss,valid_loss,mae,corr,acc7,acc5,acc2_non_zero,f1_non_zero,acc2,f1,note
+sanity_mosi_hme_mr00_s5576_e1,MOSI,0.0,5576,1,2.3406,2.4169,1.1841,0.6652,0.1866,0.1866,0.8079,0.8019,0.7857,0.7783,sanity check only
+sanity_mosi_hme_mr02_s5576_e1,MOSI,0.2,5576,1,2.3681,2.4292,1.2553,0.5903,0.1778,0.1778,0.7409,0.7421,0.7362,0.7365,sanity check only
+pilot_mosi_hme_mr02_s5576_e20,MOSI,0.2,5576,20,1.3818,1.8360,0.8529,0.6993,0.3994,0.4519,0.7759,0.7767,0.7638,0.7640,pilot comparison on MOSI mr=0.2 seed=5576
+pilot_mosi_hme_mr00_s5576_e20,MOSI,0.0,5576,20,0.4681,1.3502,0.7596,0.7943,0.4329,0.4971,0.8506,0.8514,0.8382,0.8385,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_hme_mr01_s5576_e20,MOSI,0.1,5576,20,0.9487,1.6628,0.8499,0.6971,0.3980,0.4534,0.7835,0.7828,0.7566,0.7544,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_hme_mr03_s5576_e20,MOSI,0.3,5576,20,1.6557,2.0409,0.9151,0.6631,0.3615,0.4140,0.7622,0.7611,0.7464,0.7444,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_hme_mr05_s5576_e20,MOSI,0.5,5576,20,1.9122,2.2883,1.1426,0.5445,0.2566,0.2697,0.6524,0.6469,0.6545,0.6476,pilot comparison on MOSI multi missing rates seed=5576
+pilot_mosi_hme_mr02_s1111_e20,MOSI,0.2,1111,20,1.0611,1.7339,0.8515,0.7125,0.3746,0.4257,0.8095,0.8088,0.7857,0.7840,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_hme_mr03_s1111_e20,MOSI,0.3,1111,20,1.2961,1.8890,0.9455,0.6344,0.3469,0.3980,0.7713,0.7709,0.7522,0.7507,pilot multi-seed check on MOSI seed=1111
+pilot_mosi_hme_mr05_s1111_e20,MOSI,0.5,1111,20,1.8809,2.2253,1.1362,0.5146,0.2843,0.3134,0.6387,0.6307,0.6399,0.6307,pilot multi-seed check on MOSI seed=1111
+sanity_mosei_hme_mr02_s5576_e1,MOSEI,0.2,5576,1,1.4187,1.2576,0.6241,0.6614,0.4853,0.4885,0.8054,0.8016,0.7811,0.7835,MOSEI sanity check
+progress_mosi_hme_mr02_s9999_e1,MOSI,0.2,9999,1,2.3934,2.5153,1.3043,0.5479,0.1545,0.1545,0.7256,0.7272,0.7099,0.7106,progress bar display test only
+pilot_mosi_hme_mr02_s2222_e20,MOSI,0.2,2222,20,1.0451,1.6652,0.8859,0.6962,0.3863,0.4315,0.7713,0.7727,0.7609,0.7616,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_hme_mr03_s2222_e20,MOSI,0.3,2222,20,1.3527,1.8743,0.9308,0.6549,0.3834,0.4329,0.7546,0.7559,0.7405,0.7412,pilot multi-seed check on MOSI seed=2222
+pilot_mosi_hme_mr05_s2222_e20,MOSI,0.5,2222,20,1.8722,2.1845,1.1062,0.5080,0.2988,0.3265,0.6966,0.6964,0.6822,0.6808,pilot multi-seed check on MOSI seed=2222
+official_mosi_hme_mr05_s5576_e100,MOSI,0.5,5576,100,1.9122,2.2883,1.1426,0.5445,0.2566,0.2697,0.6524,0.6469,0.6545,0.6476,official check on MOSI mr=0.5 seed=5576 epochs=100
+official_mosi_hme_mr05_s1111_e100,MOSI,0.5,1111,100,1.2201,1.7891,1.0803,0.5456,0.3309,0.3644,0.7012,0.7027,0.6953,0.6958,official MOSI mr=0.5 multi-seed check
+official_mosi_hme_mr05_s2222_e100,MOSI,0.5,2222,100,1.3656,1.9785,1.0807,0.5351,0.3120,0.3484,0.6982,0.6985,0.6851,0.6843,official MOSI mr=0.5 multi-seed check
+official_mosi_hme_mr03_s5576_e100,MOSI,0.3,5576,100,0.9250,1.6838,0.9582,0.6366,0.3557,0.3994,0.7530,0.7545,0.7376,0.7383,official MOSI mr=0.3 multi-seed check
+official_mosi_hme_mr03_s1111_e100,MOSI,0.3,1111,100,0.7982,1.5348,0.9297,0.6427,0.3921,0.4431,0.7485,0.7496,0.7347,0.7351,official MOSI mr=0.3 multi-seed check
+official_mosi_hme_mr03_s2222_e100,MOSI,0.3,2222,100,0.9020,1.6172,0.9083,0.6586,0.3776,0.4242,0.7637,0.7608,0.7536,0.7503,official MOSI mr=0.3 multi-seed check
+official_mosi_hme_mr02_s5576_e100,MOSI,0.2,5576,100,0.6883,1.5132,0.8452,0.7050,0.4096,0.4577,0.8034,0.8018,0.7813,0.7787,official MOSI mr=0.2 multi-seed check
+official_mosi_hme_mr02_s1111_e100,MOSI,0.2,1111,100,0.6569,1.5017,0.9173,0.6740,0.3950,0.4388,0.7652,0.7666,0.7595,0.7601,official MOSI mr=0.2 multi-seed check
+official_mosi_hme_mr02_s2222_e100,MOSI,0.2,2222,100,0.6750,1.5493,0.8425,0.7188,0.3994,0.4388,0.8201,0.8187,0.7988,0.7964,official MOSI mr=0.2 multi-seed check
+official_mosei_hme_mr05_s5576_e100,MOSEI,0.5,5576,100,0.8877,1.1648,0.6833,0.5402,0.4778,0.4855,0.7353,0.7249,0.7334,0.7312,official MOSEI mr=0.5 seed=5576 generalization check
+official_mosei_hme_mr02_s5576_e100,MOSEI,0.2,5576,100,0.4505,1.0383,0.6011,0.6755,0.5055,0.5164,0.7999,0.7964,0.7839,0.7859,official MOSEI mr=0.2 seed=5576 generalization check
+official_mosei_hme_mr02_s1111_e100,MOSEI,0.2,1111,100,1.4355,1.2736,0.6462,0.6264,0.4778,0.4808,0.7892,0.7781,0.7985,0.7914,official MOSEI mr=0.2 seed=1111 generalization multi-seed check
+official_mosei_hme_mr02_s2222_e100,MOSEI,0.2,2222,100,,,,,,,,,,,official MOSEI mr=0.2 seed=2222 generalization multi-seed check
+official_mosei_hme_mr05_s1111_e100,MOSEI,0.5,1111,100,,,,,,,,,,,official MOSEI mr=0.5 seed=1111 generalization multi-seed check
+official_mosei_hme_mr05_s2222_e100,MOSEI,0.5,2222,100,,,,,,,,,,,official MOSEI mr=0.5 seed=2222 generalization multi-seed check

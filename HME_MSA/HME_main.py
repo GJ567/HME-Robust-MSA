@@ -1,4 +1,32 @@
 from __future__ import absolute_import, division, print_function
+
+from tqdm import tqdm as _raw_tqdm, trange as _raw_trange
+import sys
+
+# ===== stable tqdm one-line progress settings =====
+TQDM_BAR_FORMAT = "{desc}: {percentage:3.0f}%|{bar:30}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]"
+
+def tqdm(*args, **kwargs):
+    kwargs["dynamic_ncols"] = True
+    kwargs["ncols"] = 100
+    kwargs["leave"] = True
+    kwargs["mininterval"] = 0.5
+    kwargs["bar_format"] = TQDM_BAR_FORMAT
+    kwargs["file"] = sys.stdout
+    return _raw_tqdm(*args, **kwargs)
+
+def trange(*args, **kwargs):
+    kwargs["dynamic_ncols"] = True
+    kwargs["ncols"] = 100
+    kwargs["leave"] = True
+    kwargs["mininterval"] = 0.5
+    kwargs["bar_format"] = TQDM_BAR_FORMAT
+    kwargs["file"] = sys.stdout
+    return _raw_trange(*args, **kwargs)
+# ===== end stable tqdm settings =====
+
+
+
 import sys
 # sys.path.append('..')
 import argparse
@@ -10,7 +38,8 @@ import numpy as np
 from typing import *
 from utils import *
 import time
-from tqdm import tqdm, trange
+
+
 from sklearn.metrics import classification_report, confusion_matrix, precision_recall_fscore_support, accuracy_score, f1_score
 import torch
 import torch.nn as nn
@@ -82,8 +111,8 @@ def convert_to_features(args, examples, max_seq_length, tokenizer):
     for (ex_index, example) in enumerate(examples):
 
         (words, visual, acoustic), label_id, segment = example
-        acoustic[acoustic == -np.inf] = 0
-        visual[visual == -np.inf] = 0
+        acoustic = np.nan_to_num(acoustic, nan=0.0, posinf=0.0, neginf=0.0)
+        visual = np.nan_to_num(visual, nan=0.0, posinf=0.0, neginf=0.0)
         tokens, inversions = [], []
         for idx, word in enumerate(words):
             tokenized = tokenizer.tokenize(word)
@@ -371,6 +400,15 @@ parser.add_argument('--weight_decay', type=float, default=5e-4)
 
 
 args = parser.parse_args()
+# Auto set modality dimensions for MOSI/MOSEI
+if args.dataset.lower() == "mosei":
+    args.TEXT_DIM = 768
+    args.VISUAL_DIM = 35
+    args.ACOUSTIC_DIM = 74
+else:
+    args.TEXT_DIM = 768
+    args.VISUAL_DIM = 20
+    args.ACOUSTIC_DIM = 5
 torch.manual_seed(args.seed)
 dataset = str.lower(args.dataset.strip())
 args = parser.parse_args()
@@ -423,7 +461,7 @@ def train_epoch(model: nn.Module, train_dataloader: DataLoader, epoch=None):
     nums = args.train_nums
     ps = generate_missing_matrix(nums, 3, missing_rate=args.missing_rate)
 
-    for batch_idx, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
+    for batch_idx, batch in enumerate(tqdm(train_dataloader, desc="Iteration", dynamic_ncols=True, ncols=100, leave=True, mininterval=0.5, bar_format=TQDM_BAR_FORMAT)):
         batch = tuple(t.to(DEVICE) for t in batch)
         input_ids, visual, acoustic, input_mask, segment_ids, label_ids = batch
         visual = torch.squeeze(visual, 1)
@@ -452,6 +490,38 @@ def train_epoch(model: nn.Module, train_dataloader: DataLoader, epoch=None):
         loss_task = loss_fct(predictions.view(-1), label_ids.view(-1))
         loss_fc_loss = (loss_fct(logits_l_p.view(-1), label_ids.view(-1)) + loss_fct(logits_a_p.view(-1), label_ids.view(-1)) + loss_fct(logits_v_p.view(-1), label_ids.view(-1))) / 3.0
         loss_all = loss_task + 0.8*loss_fc_loss + 0.01*info_losses
+
+        if not torch.isfinite(loss_all):
+            print("\n========== NaN DEBUG ==========")
+            print("epoch:", epoch, "batch_idx:", batch_idx)
+
+            def check_tensor(name, x):
+                if torch.is_tensor(x):
+                    xd = x.detach()
+                    print(
+                        name,
+                        "shape:", tuple(xd.shape),
+                        "nan:", torch.isnan(xd).sum().item(),
+                        "inf:", torch.isinf(xd).sum().item(),
+                        "min:", torch.nan_to_num(xd).min().item(),
+                        "max:", torch.nan_to_num(xd).max().item(),
+                    )
+                else:
+                    print(name, x)
+
+            check_tensor("visual", visual)
+            check_tensor("acoustic", acoustic)
+            check_tensor("label_ids", label_ids)
+            check_tensor("logits_l_p", logits_l_p)
+            check_tensor("logits_a_p", logits_a_p)
+            check_tensor("logits_v_p", logits_v_p)
+            check_tensor("predictions", predictions)
+            check_tensor("info_losses", info_losses)
+            check_tensor("loss_task", loss_task)
+            check_tensor("loss_fc_loss", loss_fc_loss)
+            check_tensor("loss_all", loss_all)
+            print("========== NaN DEBUG END ==========")
+            raise RuntimeError("NaN detected in training loss")
         
         
         optimizer.zero_grad()
@@ -476,7 +546,7 @@ def eval_epoch(model: nn.Module, dev_dataloader: DataLoader):
     ps = generate_missing_matrix(nums, 3, missing_rate=args.missing_rate)
 
     with torch.no_grad():
-        for batch_idx, batch in enumerate(tqdm(dev_dataloader, desc="Iteration")):
+        for batch_idx, batch in enumerate(tqdm(dev_dataloader, desc="Iteration", dynamic_ncols=True, ncols=100, leave=True, mininterval=0.5, bar_format=TQDM_BAR_FORMAT)):
             batch = tuple(t.to(DEVICE) for t in batch)
             input_ids, visual, acoustic, input_mask, segment_ids, label_ids = batch
             visual = torch.squeeze(visual, 1)
@@ -523,7 +593,7 @@ def test_epoch(model: nn.Module, test_dataloader: DataLoader):
     ps = generate_missing_matrix(nums, 3, missing_rate=args.missing_rate)
     
     with torch.no_grad():
-        for batch_idx, batch in enumerate(tqdm(test_dataloader, desc="Iteration")):
+        for batch_idx, batch in enumerate(tqdm(test_dataloader, desc="Iteration", dynamic_ncols=True, ncols=100, leave=True, mininterval=0.5, bar_format=TQDM_BAR_FORMAT)):
             batch = tuple(t.to(DEVICE) for t in batch)
             
             input_ids, visual, acoustic, input_mask, segment_ids, label_ids = batch
@@ -611,6 +681,13 @@ def train(
     f1_scores = []
     # best_loss = 1e8
     best_mae = 1e5
+    best_corr = 0.0
+    best_acc7 = 0.0
+    best_acc5 = 0.0
+    best_acc2_non_zero = 0.0
+    best_f_score_non_zero = 0.0
+    best_acc2 = 0.0
+    best_f_score = 0.0
 
     # early stopping
     patience = 10 
@@ -677,25 +754,22 @@ def main():
     print(args)
 
 
-    # =========================
+        # =========================
     # Save experiment setting
+    # Baseline HME
     # =========================
     os.makedirs("./logs", exist_ok=True)
-    exp_log_path = "./logs/hme_topk_{}_k{}_t{}_mr{}.log".format(
+    exp_log_path = "./logs/hme_{}_mr{}.log".format(
         args.dataset,
-        args.top_k,
-        args.top_temperature,
         args.missing_rate
     )
 
     with open(exp_log_path, "a", encoding="utf-8") as f:
         f.write("\n" + "=" * 80 + "\n")
-        f.write("Experiment: HME-TopK\n")
+        f.write("Experiment: HME baseline\n")
         f.write("Dataset: {}\n".format(args.dataset))
         f.write("Epochs: {}\n".format(args.n_epochs))
         f.write("Missing rate: {}\n".format(args.missing_rate))
-        f.write("Top-k: {}\n".format(args.top_k))
-        f.write("Top temperature: {}\n".format(args.top_temperature))
         f.write("Train batch size: {}\n".format(args.train_batch_size))
         f.write("Dev batch size: {}\n".format(args.dev_batch_size))
         f.write("Test batch size: {}\n".format(args.test_batch_size))
