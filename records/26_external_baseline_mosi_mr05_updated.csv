@@ -1,0 +1,6 @@
+method,type,seeds,mae,corr,acc2,f1,note
+HME,internal baseline,3,1.1012±0.0359,0.5417±0.0058,0.6783±0.0212,0.6759±0.0252,Original HME
+LNLN-adapted,external baseline,1,1.1480,0.4914,0.6851,0.6855,Has0 Acc-2/F1 adapted pilot
+TFR-Net-adapted,classic external baseline,1,1.1739,0.4774,0.6910,0.6914,Has0 Acc-2/F1 adapted pilot
+EMT-DLFR-adapted,recent external baseline,3,1.1178±0.0027,0.4960±0.0101,0.7070±0.0036,0.7075±0.0038,Has0 Acc-2/F1 adapted pilot
+DARE-HME,ours,3,0.7908±0.0081,0.7457±0.0097,0.7910±0.0138,0.7910±0.0145,Final full model

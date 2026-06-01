@@ -1,0 +1,2 @@
+method,dataset,missing_rate,seed,mae,corr,has0_acc2,has0_f1,non0_acc2,non0_f1,note
+EMT-DLFR-adapted,MOSI,0.5,5576,1.1197,0.4921,0.7114,0.7120,0.7165,0.7179,pilot external baseline using converted HME-compatible MOSI data

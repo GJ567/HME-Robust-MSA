@@ -1,0 +1,5 @@
+method,dataset,missing_rate,seed,mae,corr,has0_acc2,has0_f1,non0_acc2,non0_f1,note
+EMT-DLFR-adapted,MOSI,0.5,1111,1.1197,0.5099,0.7070000000000001,0.7078,0.7119,0.7136,adapted pilot baseline using converted HME-compatible MOSI data
+EMT-DLFR-adapted,MOSI,0.5,2222,1.114,0.486,0.7026,0.7028,0.7104,0.7114,adapted pilot baseline using converted HME-compatible MOSI data
+EMT-DLFR-adapted,MOSI,0.5,5576,1.1197,0.4921,0.7114,0.7120000000000001,0.7165,0.7179000000000001,adapted pilot baseline using converted HME-compatible MOSI data
+EMT-DLFR-adapted,MOSI,0.5,mean±std,1.1178±0.0027,0.4960±0.0101,0.7070±0.0036,0.7075±0.0038,0.7129±0.0026,0.7143±0.0027,3-seed summary
