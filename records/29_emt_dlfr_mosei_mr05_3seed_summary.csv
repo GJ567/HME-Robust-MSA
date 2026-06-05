@@ -1,0 +1,2 @@
+Model,Dataset,MR,Seeds,Has0_Acc2_mean,Has0_Acc2_std,Has0_F1_mean,Has0_F1_std,Non0_Acc2_mean,Non0_Acc2_std,Non0_F1_mean,Non0_F1_std,MAE_mean,MAE_std,Corr_mean,Corr_std
+EMT-DLFR,MOSEI,0.5,"1111/2222/5576",0.7435,0.0365,0.7489,0.0307,0.7617,0.0188,0.7602,0.0152,0.6831,0.0008,0.5577,0.0070
